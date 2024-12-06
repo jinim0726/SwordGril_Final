@@ -1,4 +1,8 @@
-from sdl2 import SDL_KEYDOWN, SDL_KEYUP, SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_j
+from sdl2 import SDL_KEYDOWN, SDL_KEYUP, SDLK_w, SDLK_a, SDLK_s, SDLK_d, SDLK_j, SDL_GetKeyboardState
+
+def is_key_pressed(key):
+    keys = SDL_GetKeyboardState(None)
+    return keys[key]
 
 def start_event(e):
     return e[0] == 'START'
@@ -36,8 +40,14 @@ def j_up(e):
 def time_out(e):
     return (e[0] == 'TIME_OUT')
 
-def hit(e):
-    return (e[0] == 'Hit')
+def idle(e):
+    return(e[0] == 'TO_IDLE')
+
+def run(e):
+    return(e[0] == 'TO_RUN')
+
+def hurt(e):
+    return (e[0] == 'HURT')
 
 def dead(e):
     return (e[0] == 'DEAD')

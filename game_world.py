@@ -65,6 +65,9 @@ def handle_collisions():
     for group, pairs, in collision_pairs.items():
         for a in pairs[0]: # A 리스트에서
             for b in pairs[1]: # B 리스트에서
-                a.handle_collision(group, b, collide(a, b, group))
-                b.handle_collision(group, a, collide(a, b, group))
+                if a is None or b is None:
+                    pass
+                else:
+                    a.handle_collision(group, b, collide(a, b, group))
+                    b.handle_collision(group, a, collide(a, b, group))
     return None
